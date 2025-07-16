@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutSection() {
   return (
@@ -9,7 +10,7 @@ export default function AboutSection() {
       className="relative bg-gray-50 py-28 px-6 text-gray-800 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-        {/* Text Section with Animation */}
+        {/* Text Section */}
         <motion.div
           className="space-y-6"
           initial={{ opacity: 0, x: -40 }}
@@ -28,7 +29,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            At <span className="text-yellow-600 font-semibold">Buildwise</span>, we're not just another construction company — we're architectural storytellers, engineering dreamers, and builders of legacy.
+            At <span className="text-yellow-600 font-semibold">Buildwise</span>, we&apos;re not just another construction company— we&apos;re architectural storytellers, engineering dreamers, and builders of legacy.
           </motion.p>
 
           <motion.p
@@ -38,7 +39,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Whether you’re breaking ground on a family home or spearheading a multimillion-naira infrastructure project, we provide the expertise, tools, and team to make it happen — on time and on point.
+            Whether you&apos;re breaking ground on a family home or spearheading a multimillion-naira infrastructure project, we provide the expertise, tools, and team to make it happen — on time and on point.
           </motion.p>
 
           <motion.p
@@ -74,7 +75,7 @@ export default function AboutSection() {
           </motion.div>
         </motion.div>
 
-        {/* Image Section with Fade-in */}
+        {/* Optimized Image Section */}
         <motion.div
           className="relative w-full h-96 md:h-[32rem] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-yellow-400/30"
           initial={{ opacity: 0, x: 40 }}
@@ -82,11 +83,14 @@ export default function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <img
+          <Image
             src="https://www.onlinesafetytrainer.com/wp-content/uploads/2020/09/construction_safety_hazards.jpg"
             alt="Buildwise construction site"
-            className="w-full h-full object-cover rounded-3xl"
-            draggable="false"
+            fill
+            className="object-cover rounded-3xl"
+            unoptimized
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent rounded-3xl" />
         </motion.div>

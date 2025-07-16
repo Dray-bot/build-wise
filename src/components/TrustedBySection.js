@@ -2,6 +2,7 @@
 
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect } from 'react'
+import Image from 'next/image'
 
 const logos = [
   'https://www.dangote.com/wp-content/uploads/2021/08/blue-logo-background.jpg',
@@ -18,11 +19,11 @@ export default function TrustedBySection() {
   useEffect(() => {
     const loopAnimation = async () => {
       while (true) {
-        await controls.start({ x: 0 }) // Appear instantly
-        await new Promise((res) => setTimeout(res, 3000)) // Wait 3s
-        await controls.start({ x: '-100%', transition: { duration: 3, ease: 'easeInOut' } }) // Move out slowly
-        await controls.set({ x: '100%' }) // Jump to right instantly
-        await controls.start({ x: '0%', transition: { duration: 3, ease: 'easeInOut' } }) // Come back in slowly
+        await controls.start({ x: 0 })
+        await new Promise((res) => setTimeout(res, 3000))
+        await controls.start({ x: '-100%', transition: { duration: 3, ease: 'easeInOut' } })
+        await controls.set({ x: '100%' })
+        await controls.start({ x: '0%', transition: { duration: 3, ease: 'easeInOut' } })
       }
     }
 
@@ -34,7 +35,7 @@ export default function TrustedBySection() {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Trusted By</h2>
         <p className="text-gray-500 text-lg mb-14 max-w-xl mx-auto">
-          We've collaborated with industry leaders and visionary brands across Nigeria.
+          We&apos;ve collaborated with industry leaders and visionary brands across Nigeria.
         </p>
 
         <div className="overflow-hidden relative">
@@ -47,10 +48,14 @@ export default function TrustedBySection() {
                 key={idx}
                 className="w-48 h-24 flex items-center justify-center bg-white px-6 py-4 rounded-2xl shadow-lg"
               >
-                <img
+                <Image
                   src={src}
                   alt={`Client ${idx + 1}`}
+                  width={192}
+                  height={96}
                   className="max-h-20 w-full object-contain drop-shadow-[0_0_12px_rgba(234,179,8,0.7)] brightness-110"
+                  unoptimized
+                  sizes="(max-width: 768px) 50vw, 192px"
                 />
               </div>
             ))}

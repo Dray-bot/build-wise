@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const projects = [
   {
@@ -61,10 +62,13 @@ export default function FeaturedProjects() {
               viewport={{ once: true }}
             >
               <div className="relative w-full h-64 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
@@ -76,7 +80,6 @@ export default function FeaturedProjects() {
           ))}
         </div>
 
-        {/* Optionally add a CTA */}
         <motion.div
           className="mt-14"
           initial={{ opacity: 0, scale: 0.9 }}

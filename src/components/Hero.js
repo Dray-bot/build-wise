@@ -3,6 +3,7 @@
 import { ArrowRight, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Hero() {
   const bgImage =
@@ -10,22 +11,19 @@ export default function Hero() {
   const [showQuoteModal, setShowQuoteModal] = useState(false)
 
   return (
-    <section
-      className="relative bg-cover bg-center bg-no-repeat text-white py-32 px-6"
-      style={{
-        backgroundImage: `url("${bgImage}")`,
-      }}
-    >
-      {/* 👻 Hidden img so you can copy the address */}
-      <img
-        src={bgImage}
-        alt="Background Preview"
-        className="hidden"
-        draggable="false"
-      />
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
+    <section className="relative text-white py-32 px-6 overflow-hidden h-[100vh]">
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src={bgImage}
+          alt="Construction background"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
 
       {/* Content */}
       <motion.div
