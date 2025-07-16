@@ -29,7 +29,11 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-gray-50 py-24 px-6 text-gray-800">
+    <section
+      id="testimonials"
+      className="bg-gray-50 py-24 px-6 text-gray-800"
+      aria-label="Testimonials from our clients"
+    >
       <div className="max-w-5xl mx-auto text-center">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-4"
@@ -45,7 +49,7 @@ export default function Testimonials() {
           className="text-gray-500 mb-12 max-w-xl mx-auto text-lg"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
           viewport={{ once: true }}
         >
           Real feedback from people who trusted Buildwise.
@@ -55,13 +59,13 @@ export default function Testimonials() {
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
-          autoplay={{ delay: 5000 }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
-          className="max-w-xl w-full mx-auto px-4"
+          className="max-w-xl w-full mx-auto"
         >
           {testimonials.map((t, index) => (
             <SwiperSlide key={index}>
-              <motion.div
+              <motion.blockquote
                 className="bg-white p-8 rounded-2xl shadow-lg text-left"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -71,11 +75,11 @@ export default function Testimonials() {
                 <p className="text-gray-600 italic mb-6 text-lg leading-relaxed">
                   “{t.message}”
                 </p>
-                <div className="text-left">
+                <footer>
                   <p className="font-semibold text-gray-900">{t.name}</p>
                   <p className="text-sm text-gray-500">{t.role}</p>
-                </div>
-              </motion.div>
+                </footer>
+              </motion.blockquote>
             </SwiperSlide>
           ))}
         </Swiper>

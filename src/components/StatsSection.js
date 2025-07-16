@@ -37,9 +37,12 @@ export default function StatsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
-  const counts = stats.map((stat) =>
-    useCountUp(stat.number, 2000, isInView)
-  )
+  // ❗ Call useCountUp outside map
+  const count0 = useCountUp(stats[0].number, 2000, isInView)
+  const count1 = useCountUp(stats[1].number, 2000, isInView)
+  const count2 = useCountUp(stats[2].number, 2000, isInView)
+  const count3 = useCountUp(stats[3].number, 2000, isInView)
+  const counts = [count0, count1, count2, count3]
 
   return (
     <section id="stats" ref={ref} className="py-24 px-6 bg-white relative overflow-hidden">
